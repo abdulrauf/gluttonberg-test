@@ -33,7 +33,7 @@ module Gluttonberg
             :asset_collection_ids => [ @collection1.id , @collection3.id ], 
             :file=> @file, 
             :description=>"<p>test</p>"
-            }
+        }
       
         Library.build_default_asset_types    
             
@@ -78,6 +78,8 @@ module Gluttonberg
         @asset.asset_collections.first.name.should == "Collection1"
         @asset.asset_collections[1].name.should == "Collection3"      
       end
+      
+      it "should clean its garbage when asset is actually deleted."
     
 
     

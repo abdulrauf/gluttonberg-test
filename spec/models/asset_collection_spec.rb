@@ -33,6 +33,8 @@ module Gluttonberg
       @collections.length.should == 1
     end
     
+    it "should clean its associations when collection is deleted"
+    
 
   end
 

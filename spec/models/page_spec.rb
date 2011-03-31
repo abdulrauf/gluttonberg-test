@@ -63,7 +63,7 @@ module Gluttonberg
      
     it "should load contents (html_contents, image_contents, plain_text_contents)"
     
-    it "should parent and children assoications"
+    it "should have parent and children assoications"
     
     it "should do slug management"
     
@@ -84,6 +84,8 @@ module Gluttonberg
     it "should set_depth of the page"
     
     it ""
+    
+    it "should remove its all depdendents if destroyed."
     
   
     # it "test_saves_versioned_copy" do
