@@ -9,7 +9,10 @@ module Gluttonberg
       
       end
       
+      it "should update regenerate path of localization if slug is changed for localization"
       
+      it "should update path of decendent pages if parent.paths_need_recaching is true"
+  
   
   end
 end        
