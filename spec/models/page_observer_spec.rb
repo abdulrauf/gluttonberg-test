@@ -107,14 +107,6 @@ module Gluttonberg
       @page2.paths_need_recaching.should == true
     end  
     
-    it "before_save(page) should set depth of the page if page.parent_id is changed or its a new record" do
-      previous_depth = @page2.depth
-      @page2.parent_id = @page.id 
-      
-      @observer.before_save(@page2)
-      @page2.depth.should_not == previous_depth
-    end  
-    
     it "after_update(page) should regenerate_paths for page_localizations if page.paths_need_recaching? is true." do
       
       @page4 = Page.create! :name => 'Page4', :description_name => 'newsletter'
