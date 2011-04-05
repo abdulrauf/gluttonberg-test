@@ -18,3 +18,5 @@ gem 'transitions' , :git => "git://github.com/qoobaa/transitions.git" , :require
 group :test, :development do
   gem "rspec-rails", "~> 2.0.1"  
 end
+
+#gem "mongrel"

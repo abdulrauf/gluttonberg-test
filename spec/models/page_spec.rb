@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'spec_helper'
 
 module Gluttonberg 
@@ -15,7 +17,7 @@ module Gluttonberg
 
     it "should return correct localization"
 
-    it "should raise error if locale is missing"
+    it "should raise error if localization is missing"
 
     it "should return application as layout name" do
       @page.layout.should == "application"
@@ -61,13 +63,42 @@ module Gluttonberg
     
 
      
-    it "should load contents (html_contents, image_contents, plain_text_contents)"
+    it "should load contents (html_contents, image_contents, plain_text_contents)" do
+        @page.respond_to?(:html_contents).should == true
+        @page.respond_to?(:image_contents).should == true
+        @page.respond_to?(:plain_text_contents).should == true
+        
+        #in my example newsletter has one content for each type
+        @page.html_contents.length.should == 1
+        @page.image_contents.length.should == 1
+        @page.plain_text_contents.length.should == 1        
+    end
     
-    it "should have parent and children assoications"
+    it "should have parent and children assoications" do
+      p1 = Page.create(:name => "P1" , :description_name => 'home' )
+      p2 = Page.create(:name => "P2" , :description_name => 'home' , :parent => p1)
+      p1.children.length.should == 1
+      p2.parent.id.should == p1.id 
+    end
     
-    it "should do slug management"
     
-    it "should position new page at bottom of the list"
+    it "should do slug management. If slug is not available it should make slug from title of the page by cleaning it. It should work with ruby 1.9.2" do
+        page = Page.new(:name => "Page ”Slug Test" , :description_name => 'home')
+        
+        page.slug.blank?.should == true
+        
+        page.valid?
+        page.slug.blank?.should == false
+        page.slug.should == "page_slug_test"
+        
+        page.slug = "Page \t Slug ′‟‛„‚”“”˝\(\)\;\:\@\&\=\+\$\,\/?\%\#\[\]] Test"
+        page.slug.should == "page___slug__test"        
+    end
+    
+        
+    it "should position new page at bottom of the list" do
+        
+    end
     
     it "should manage position properly when we are rearranging items"
     
@@ -83,9 +114,9 @@ module Gluttonberg
     
     it "should set_depth of the page"
     
-    it ""
-    
     it "should remove its all depdendents if destroyed."
+      
+    end
     
   
     # it "test_saves_versioned_copy" do

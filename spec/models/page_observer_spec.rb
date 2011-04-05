@@ -44,19 +44,14 @@ module Gluttonberg
           @page2 = Page.create! :name => 'Page2', :description_name => 'newsletter'
       end
       
-    it "if locale and dialect does not exist then do not create any page localization" do
-      @page.reload
-      @page.localizations.length.should == 0
-    end
       
-      
-    it "should create localization when we manually call @observer.after_create(page)" do
+    it "should create localization when we create locale" do
       @page.reload
-      @page.localizations.length.should == 0
+      @page.localizations.length.should == 1
       
       @observer.after_create(@page)
       
-      @page.localizations.length.should == 1      
+      @page.localizations.length.should == 2      
     end
       
     it "should create page localization when page is created given that locale and dialect exist." do
@@ -135,10 +130,6 @@ module Gluttonberg
       
       @page4.localizations.first.path.should == new_path_of_localization
     end  
-    
-    
-    it "after_update(page) should update page depth for page and its children if page.depths_need_recaching is true."
-    
     
     
     
