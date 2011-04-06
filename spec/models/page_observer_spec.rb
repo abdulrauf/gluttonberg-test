@@ -32,6 +32,9 @@ module Gluttonberg
   describe PageObserver do
       
       before(:all) do
+          Gluttonberg::Dialect.delete_all
+          Gluttonberg::Locale.delete_all
+        
           @page = Page.create! :name => 'first name', :description_name => 'newsletter'
           
           dialect = Gluttonberg::Dialect.create( :code => "en" , :name => "English" , :default => true)

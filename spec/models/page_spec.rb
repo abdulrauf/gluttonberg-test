@@ -106,17 +106,12 @@ module Gluttonberg
   
     it "should have nav_label"
     
-    it "should have title"
-    
     it "should have path"
     
     it "should have template_paths"
     
-    it "should set_depth of the page"
-    
     it "should remove its all depdendents if destroyed."
       
-    end
     
   
     # it "test_saves_versioned_copy" do
