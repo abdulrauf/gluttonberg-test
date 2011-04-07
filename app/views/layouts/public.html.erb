@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GluttonbergTest</title>
+  <%= csrf_meta_tag %>
+  <%= google_analytics %>
+  
+</head>
+<body>
+
+<% @pages = Gluttonberg::Page.all  %>
+
+<%= navigation_tree(@pages, :id => "navigation")%>
+<%= yield %>
+
+</body>
+</html>
